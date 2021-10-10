@@ -9,6 +9,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Detail)
 class DetailAdmin(admin.ModelAdmin):
-    list_display = ['detail_title', 'price', 'available', 'created_at', 'updated_at']
-    list_filter = ['available', 'created_at', 'updated_at']
-    list_editable = ['price', 'available']
+    list_display = ['detail_title', 'category', 'price', 'available', 'created_at', 'updated_at']
+    list_filter = ['available', 'category', 'created_at', 'updated_at']
+    list_editable = ['price', 'category', 'available']
