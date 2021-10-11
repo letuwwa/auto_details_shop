@@ -1,5 +1,6 @@
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.utils.safestring import mark_safe
 
 
 class Category(models.Model):
@@ -35,6 +36,11 @@ class Detail(models.Model):
         verbose_name="Стоимость товара",
         validators=[MinValueValidator(0.00, message="Стоимость не может быть меньше нуля!")]
     )
+
+    def image_tag(self):
+        return mark_safe(f'<img src="{self.image.url}" width="150" height="150"/>')
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
 
     def __str__(self):
         return self.detail_title
