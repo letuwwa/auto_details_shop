@@ -6,6 +6,7 @@ from django.utils.safestring import mark_safe
 class Category(models.Model):
     category_title = models.CharField(max_length=128, db_index=True, verbose_name="Название категории")
 
+    slug = models.SlugField(max_length=200, unique=True, null=True, verbose_name="URL")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
@@ -27,6 +28,7 @@ class Detail(models.Model):
     description = models.TextField(max_length=2048, verbose_name="Описание товара")
     detail_title = models.CharField(max_length=1024, db_index=True, verbose_name="Название товара")
 
+    slug = models.SlugField(max_length=200, db_index=True, null=True, verbose_name="URL")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
 
