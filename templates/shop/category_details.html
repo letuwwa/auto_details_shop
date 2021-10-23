@@ -2,3 +2,13 @@
 
 {% block images %}
 {% endblock %}
+
+{% block content %}
+    <h1>Категория {{ category }}</h1>
+    <h2>Доступные товары</h2>
+        <ul>
+            {% for detail in details %}
+                <li>{{ detail }}</li>
+            {% endfor %}
+        </ul>
+{% endblock %}
