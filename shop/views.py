@@ -23,3 +23,16 @@ def details_by_category(request, category_id: int):
         "category": category,
     }
     return render(request, "shop/category_details.html", context=context_dict)
+
+
+def detail_single(request, detail_id: int):
+    single_detail = get_object_or_404(Detail, id=detail_id)
+
+    context_dict = {
+        "detail": single_detail
+    }
+    return render(request, "shop/single_detail.html", context=context_dict)
+
+
+def about_us(request):
+    return render(request, "shop/about_us.html", context={})
