@@ -8,7 +8,7 @@
     <h2>Доступные товары</h2>
         <ul>
             {% for detail in details %}
-                <li><a href="{% url 'shop:detail' detail.id %}">{{ detail }}</a></li>
+                <li><a href="{{ detail.get_absolute_url }}">{{ detail }}</a></li>
             {% endfor %}
         </ul>
 {% endblock %}

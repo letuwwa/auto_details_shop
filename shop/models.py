@@ -1,5 +1,6 @@
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 
@@ -9,6 +10,10 @@ class Category(models.Model):
     slug = models.SlugField(max_length=200, unique=True, null=True, verbose_name="URL")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
+
+    @property
+    def get_absolute_url(self):
+        return reverse('shop:category', args=[self.slug])
 
     def __str__(self):
         return self.category_title
@@ -44,6 +49,10 @@ class Detail(models.Model):
             return mark_safe(f'<img src="{self.image.url}" width="150" height="150"/>')
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True
+
+    @property
+    def get_absolute_url(self):
+        return reverse('shop:detail', args=[str(self.id), self.slug])
 
     def __str__(self):
         return self.detail_title

@@ -14,9 +14,9 @@ def home(request):
     return render(request, "base.html", context=context_dict)
 
 
-def details_by_category(request, category_id: int):
-    details_in_category = Detail.objects.all().filter(category_id=category_id)
-    category = get_object_or_404(Category, id=category_id)
+def details_by_category(request, slug: str):
+    category = get_object_or_404(Category, slug=slug)
+    details_in_category = Detail.objects.all().filter(category=category)
 
     context_dict = {
         "details": details_in_category,
@@ -25,8 +25,8 @@ def details_by_category(request, category_id: int):
     return render(request, "shop/category_details.html", context=context_dict)
 
 
-def detail_single(request, detail_id: int):
-    single_detail = get_object_or_404(Detail, id=detail_id)
+def detail_single(request, detail_id: int, slug: str):
+    single_detail = get_object_or_404(Detail, id=detail_id, slug=slug)
 
     context_dict = {
         "detail": single_detail
