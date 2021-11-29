@@ -1,32 +1,40 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>base page</title>
+
     <link rel="im">
+        <link rel="stylesheet" href="style.css" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <title>base page</title>
 </head>
 <body>
-<div>
-    <img src="{% static 'images/home.jpg' %}" alt="home_image" style="display: block; margin-right: auto; margin-left: auto; width: 15%" >
-</div>
-<div style="width: 100%; text-align: center">
-    <a>Дарова Братанчик</a>
-</div>
-<div>
-    <h2>Доступные товары</h2>
-    <ul>
-        {% for detail in details %}
-            <li>{{ detail }}</li>
-        {% endfor %}
-    </ul>
+<header class="header">
+    <div class = "container">
+       <div class="header_inner">
+           <div class="header_logo">ATC</div>
 
-    <h2>Доступные категории</h2>
-    <ul>
-        {% for category in categories %}
-            <li>{{ category }}</li>
-        {% endfor %}
-    </ul>
+           <nav class="nav">
+             <a class="nav_link" href="#">Главная</a>
+             <a class="nav_link" href="#">Услуги</a>
+             <a class="nav_link" href="#">О нас</a>
+             <a class="nav_link" href="#">Контакты</a>
+           </nav>
+       </div>
+    </div>
+</header>
+
+<div class="intro">
+     <div class="container">
+         <div class="intro_inner">
+           <h1 class ="intro_title">Добро положаловать в ATC</h1>
+      </div>
+     </div>
 </div>
+
+
+
 </body>
 </html>
